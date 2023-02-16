@@ -27,16 +27,16 @@ spec:
                   name: discovery-server-configmap
                   key: eureka-server-url
             
-            - name: spring.cloud.gateway.routes[0].id
+            - name: spring.cloud.gateway.routes_0_id
               value: search-service
             
-            - name: spring.cloud.gateway.routes[0].uri
+            - name: spring.cloud.gateway.routes_0_uri
               valueFrom:
                 configMapKeyRef:
                   name: discovery-server-configmap
                   key: search-service-url
             
-            - name: spring.cloud.gateway.routes[0].predicates[0]
+            - name: spring.cloud.gateway.routes_0_predicates_0_
               value: Path=/search/**
 
             # - name: spring.cloud.gateway.routes[1].id
