@@ -7,18 +7,15 @@ metadata:
 spec:
   replicas: 1
   selector:
-    matchLabels:
-      labels:
-        app: fare-service
+    app: fare-service
   template:
     metadata:
       labels:
         app: fare-service
     spec:
       containers:
-        - name: booking-service
-          image: sangameshwar18/fare-service
-          imagePullPolicy: Always
+        - name: fare-service
+          image: sangameshwar18/fare-service:1.0.0
           ports:
             - containerPort: 8081
           env:
@@ -27,25 +24,25 @@ spec:
                 configMapKeyRef:
                   name: discovery-server-configmap
                   key: database-url
-          
+            
             - name: spring.datasource.username
               valueFrom:
                 secretKeyRef:
-                name: postgres-secret
-                key: postgres-root-username
-          
+                  name: postgres-secret
+                  key: postgres-root-username
+            
             - name: spring.datasource.password
               valueFrom:
                 secretKeyRef:
                   name: postgres-secret
                   key: postgres-root-password
-          
+            
             - name: eureka.client.service-url.defaultZone
               valueFrom:
                 configMapKeyRef:
                   name: discovery-server-configmap
                   key: eureka-server-url
-
+  
 --- 
 
 apiVersion: v1
