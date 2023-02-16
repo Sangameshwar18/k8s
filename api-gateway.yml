@@ -87,6 +87,6 @@ spec:
     app : api-gateway
   type: LoadBalancer
   ports:
-    - port: 8089
+    - port: 80
       targetPort: 8089
       protocol: TCP
