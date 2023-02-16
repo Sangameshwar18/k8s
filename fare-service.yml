@@ -1,65 +1,61 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: search-service
+  name: fare-service
   labels:
-    app: search-service
+    app: fare-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: search-service
+      labels:
+        app: fare-service
   template:
     metadata:
       labels:
-        app: search-service
+        app: fare-service
     spec:
       containers:
-        - name: search-service
-          image: sangameshwar18/flight-search-microservice:1.0.0
+        - name: booking-service
+          image: sangameshwar18/fare-service
           imagePullPolicy: Always
           ports:
-            - containerPort: 8090
+            - containerPort: 8081
           env:
             - name: spring.datasource.url
               valueFrom:
                 configMapKeyRef:
                   name: discovery-server-configmap
                   key: database-url
-            
+          
             - name: spring.datasource.username
               valueFrom:
                 secretKeyRef:
-                  name: postgres-secret
-                  key: postgres-root-username
-            
+                name: postgres-secret
+                key: postgres-root-username
+          
             - name: spring.datasource.password
               valueFrom:
                 secretKeyRef:
                   name: postgres-secret
                   key: postgres-root-password
-            
+          
             - name: eureka.client.service-url.defaultZone
               valueFrom:
                 configMapKeyRef:
                   name: discovery-server-configmap
                   key: eureka-server-url
-            
 
-
----
+--- 
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: search-service
+  name: fare-service
 spec:
   selector:
-    app: search-service
+    app: fare-service
   ports:
-    - port: 8090
-      targetPort: 8090
+    - port: 8081
+      targetPort: 8081
       protocol: TCP
-
-
-

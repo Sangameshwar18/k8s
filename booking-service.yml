@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: booking-service
+  labels:
+    app: booking-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: booking-service
+  template:
+    metadata:
+      labels:
+        app: booking-service
+    spec:
+      containers:
+        image: sangameshwar18/booking-service:1.0.0
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8060
+        env:
+          - name: spring.datasource.url
+            valueFrom:
+              configMapKeyRef:
+                name: discovery-server-configmap
+                key: database-url
+          
+          - name: spring.datasource.username
+            valueFrom:
+              secretKeyRef:
+                name: postgres-secret
+                key: postgres-root-username
+          
+          - name: spring.datasource.password
+            valueFrom:
+              secretKeyRef:
+                name: postgres-secret
+                key: postgres-root-password
+          
+          - name: eureka.client.service-url.defaultZone
+            valueFrom:
+              configMapKeyRef:
+                name: discovery-server-configmap
+                key: eureka-server-url
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: booking-service
+spec:
+  selector:
+    app: booking-service
+  ports:
+    - port: 8060
+      targetPort: 8060
+      protocol: TCP
