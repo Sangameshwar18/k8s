@@ -5,4 +5,4 @@ metadata:
 data:
   search.service.id: search-service
   search.service.url: http://search-service:8090
-  search.service.path: Path= /search/**
+  search.service.path: Path= /search/*
