@@ -8,4 +8,4 @@ data:
   search-service-url: http://search-service/
   booking-service-url: http://booking-service/
   fare-service-url: http://fare-service/
-  user-service:url: http://user-service/
+  user-service-url: http://user-service/
