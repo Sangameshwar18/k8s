@@ -15,34 +15,35 @@ spec:
         app: booking-service
     spec:
       containers:
-        image: sangameshwar18/booking-service:1.0.0
-        imagePullPolicy: Always
-        ports:
-          - containerPort: 8060
-        env:
-          - name: spring.datasource.url
-            valueFrom:
-              configMapKeyRef:
-                name: discovery-server-configmap
-                key: database-url
+        - name: booking-service
+          image: sangameshwar18/booking-service:1.0.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8060
+          env:
+            - name: spring.datasource.url
+              valueFrom:
+                configMapKeyRef:
+                  name: discovery-server-configmap
+                  key: database-url
           
-          - name: spring.datasource.username
-            valueFrom:
-              secretKeyRef:
-                name: postgres-secret
-                key: postgres-root-username
+            - name: spring.datasource.username
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: postgres-root-username
           
-          - name: spring.datasource.password
-            valueFrom:
-              secretKeyRef:
-                name: postgres-secret
-                key: postgres-root-password
+            - name: spring.datasource.password
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: postgres-root-password
           
-          - name: eureka.client.service-url.defaultZone
-            valueFrom:
-              configMapKeyRef:
-                name: discovery-server-configmap
-                key: eureka-server-url
+            - name: eureka.client.service-url.defaultZone
+              valueFrom:
+                configMapKeyRef:
+                  name: discovery-server-configmap
+                  key: eureka-server-url
 
 ---
 
