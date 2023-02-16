@@ -44,6 +44,17 @@ spec:
                 configMapKeyRef:
                   name: discovery-server-configmap
                   key: eureka-server-url
+            
+            - name: eureka.instance.prefer-ip-address
+              value: true
+            
+            - name: eureka.client.fetch-registry
+              value: true
+            
+            - name: eureka.client.register-with-eureka
+              value: true
+            
+
 
 ---
 
