@@ -4,3 +4,4 @@ metadata:
   name: discovery-server-configmap
 data:
   eureka-server-url: http://discovery-server-service/eureka
+  database-url: jdbc:postgresql://database-service:5432/postgres
