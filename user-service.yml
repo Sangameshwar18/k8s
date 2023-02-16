@@ -48,7 +48,7 @@ spec:
 --- 
 
 apiVersion: v1
-kindService: Service
+kind: Service
 metadata:
   name: user-service
 spec:
