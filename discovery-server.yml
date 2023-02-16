@@ -17,6 +17,7 @@ spec:
       containers:
       - name: discovery-server
         image: sangameshwar18/discovery-server:1.0.0
+        imagePullPolicy: Always
         ports:
         - containerPort: 8761
 
