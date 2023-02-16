@@ -5,7 +5,7 @@ metadata:
 data:
   eureka-server-url: http://discovery-server-service:8761/eureka
   database-url: jdbc:postgresql://database-service:5432/postgres
-  search-service-url: http://search-service:8090
-  booking-service-url: http://booking-service:8060
-  fare-service-url: http://fare-service:8081
-  user-service-url: http://user-service:8099
+  search-service-url: http://search-service:8090/
+  booking-service-url: http://booking-service:8060/
+  fare-service-url: http://fare-service:8081/
+  user-service-url: http://user-service:8099/
