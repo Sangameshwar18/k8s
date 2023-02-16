@@ -26,6 +26,54 @@ spec:
                 configMapKeyRef:
                   name: discovery-server-configmap
                   key: eureka-server-url
+            
+            - name: spring.cloud.gateway.routes[0].id
+              value: search-service
+            
+            - name: spring.cloud.gateway.routes[0].uri
+              valueFrom:
+                configMapKeyRef:
+                  name: discovery-server-configmap
+                  key: search-service-url
+            
+            - name: spring.cloud.gateway.routes[0].predicates[0]
+              value: Path=/search/**
+
+          - name: spring.cloud.gateway.routes[1].id
+              value: booking-service
+            
+            - name: spring.cloud.gateway.routes[1].uri
+              valueFrom:
+                configMapKeyRef:
+                  name: discovery-server-configmap
+                  key: booking-service-url
+            
+            - name: spring.cloud.gateway.routes[1].predicates[0]
+              value: Path=/booking/**
+
+            - name: spring.cloud.gateway.routes[2].id
+              value: fare-service
+            
+            - name: spring.cloud.gateway.routes[2].uri
+              valueFrom:
+                configMapKeyRef:
+                  name: discovery-server-configmap
+                  key: fare-service-url
+            
+            - name: spring.cloud.gateway.routes[2].predicates[0]
+              value: Path=/fare/**
+
+            - name: spring.cloud.gateway.routes[3].id
+              value: user-service
+            
+            - name: spring.cloud.gateway.routes[3].uri
+              valueFrom:
+                configMapKeyRef:
+                  name: discovery-server-configmap
+                  key: user-service-url
+            
+            - name: spring.cloud.gateway.routes[3].predicates[0]
+              value: Path=/home/**
 
 
 ---
