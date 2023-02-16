@@ -28,22 +28,16 @@ spec:
                   key: eureka-server-url
             
             - name: spring_cloud_gateway_routes_0_id
-              valueFrom:
-                configMapKeyRef:
-                  name: api-gateway-configmap
-                  key: search.service.id
+              value: search-service
             
             - name: spring_cloud_gateway_routes_0_uri
               valueFrom:
                 configMapKeyRef:
                   name: api-gateway-configmap
-                  key: search.service.url
+                  key: search-service-url
             
             - name: spring_cloud_gateway_routes_0_predicates_0_
-              valueFrom:
-                configMapKeyRef:
-                  name: api-gateway-configmap
-                  key: search.service.path
+              value: Path=/search/**
 
             - name: spring_cloud_gateway_routes_1_id
               value: booking-service
