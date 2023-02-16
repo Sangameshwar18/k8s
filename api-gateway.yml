@@ -21,11 +21,11 @@ spec:
           ports:
             - containerPort: 8089
           env:
-            name: eureka.client.service-url.defaultZone
-            ValueFrom:
-              configMapKeyRef:
-                name: discovery-server-configmap
-                key: eureka-server-url
+            - name: eureka.client.service-url.defaultZone
+              valueFrom:
+                configMapKeyRef:
+                  name: discovery-server-configmap
+                  key: eureka-server-url
 
 
 ---
