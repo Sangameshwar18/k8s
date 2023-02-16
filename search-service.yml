@@ -39,7 +39,7 @@ spec:
                   name: postgres-secret
                   key: postgres-root-password
             
-            - name: eureka.client.service-url
+            - name: eureka.client.service-url.defaultzone
               valueFrom:
                 configMapKeyRef:
                   name: discovery-server-configmap
