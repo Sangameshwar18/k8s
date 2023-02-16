@@ -39,7 +39,7 @@ spec:
             - name: spring.cloud.gateway.routes[0].predicates[0]
               value: Path=/search/**
 
-          - name: spring.cloud.gateway.routes[1].id
+            - name: spring.cloud.gateway.routes[1].id
               value: booking-service
             
             - name: spring.cloud.gateway.routes[1].uri
