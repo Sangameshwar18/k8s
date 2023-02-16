@@ -24,7 +24,7 @@ spec:
             - name: spring.datasource.url
               valueFrom:
                 configMapKeyRef:
-                  name: discovery-server-url
+                  name: discovery-server-configmap
                   key: database-url
             
             - name: spring.datasource.username
